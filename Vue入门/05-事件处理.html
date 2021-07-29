@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        <button v-on:click = 'vue_click'>你好啊！</button>
+        <!--传参示例-->
+        <button v-on:click = 'vue_click2(99,$event)'>你好2啊！</button>
+        <!--简写形式-->
+        <button @click = 'vue_click2(99,$event)'>你好2啊！</button>
+        <!--阻止事件默认行为-->
+        <a href="https://www.baidu.com" @click.prevent="vue_click">你敢点击？？？</a>
+        <!--阻止事件冒泡-->
+        <div @click="tanchu">
+            <button @click.stop="tanchu">别碰我！！！</button>
+        </div>
+        <!--监听键盘事件-->
+        请输入：<input @keyup="con" type="text" placeholder="请输入......">
+        <!--监听键盘回车事件-->
+        请输入：<input @keyup.enter="con" type="text" placeholder="请输入......">
+        <!--监听键盘组合事件-->
+        请输入：<input @keyup.ctrl.q="tanchu" type="text" placeholder="请输入......">
+    </div>
+    <script>
+        new Vue({
+            el:'#box',
+            methods:{
+                vue_click(event){
+                    console.log(event.target.innerText)
+                    console.log(this) //此处为vue对象
+                },
+                vue_click2(number,event){
+                    console.log(event.target.innerText)
+                    console.log(number)
+                },
+                tanchu(){
+                    alert("憋点了！！！")
+                },
+                con(e){
+                    console.log(e.keyCode)
+                    console.log(e.target.value)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--引入vue-->
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+  <div id="vue01">
+    <!--单向绑定-->
+    随便写点：<input type="text" :value="name"><br>
+    <!--双向绑定-->
+    随便写点：<input type="text" v-model:value="name">
+    <!--v-model简写形式-->
+    随便写点：<input type="text" v-model="name">
+  </div>
+  <script>
+    Vue.config.productionTip = false
+    new Vue({
+      el: '#vue01',
+      data: {
+        name:'情不知其所起'
+      }
+    })
+  </script>
+</body>
+</html>
