@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="box">
+        年龄：<input type="text" v-model="age">
+        实际年龄：<input type="text" v-model="trueAge">
+        <button>请确认</button>
+    </div>
+    <script>
+        const vm = new Vue({
+            el:"#box",
+            data:{
+                age:18
+            },
+            computed:{
+              trueAge:{
+                  get(){
+                      return this.age + 5;
+                  },
+                  set(value){
+                      this.age = value-5;
+                  }
+              }
+            }
+            // ,
+            // watch:{
+            //     //监视data中的属性
+            //     age: {
+            //         immediate:true,//初始化时让handler函数执行一次
+            //         handler(oldValue,newValue){  //当age发生变化时，handler执行
+            //             console.log("age被修改了",newValue,oldValue)
+            //         }
+            //     },
+            //     //监视computed中的属性
+            //     trueAge:{
+            //         immediate: true,
+            //         handler(oldValue, newValue) {
+            //             console.log("实际年龄被修改了",newValue,oldValue)
+            //         }
+            //     }
+            // }
+        })
+        vm.$watch('age',{
+            deep:true,
+            handler(oldValue,newValue){
+                console.log("age被修改了",newValue,oldValue)
+            }
+        })
+    </script>
+</body>
+</html>

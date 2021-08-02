@@ -3,8 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
 </head>
 <body>
-
+    <div id="box">
+        姓甚？<input type="text" v-model="xing"><br>
+        名谁？<input type="text" v-model="ming"><br>
+        <h1>{{fullName}}</h1><br>
+        <h1>{{fullName}}</h1><br>
+        <h1>{{fullName}}</h1>
+    </div>
+    <script type="text/javascript">
+        new Vue({
+            el:'#box',
+            data:{
+                xing:"小猪",
+                ming:"佩奇"
+            },
+            computed:{
+                fullName:{
+                    //get被调用的时机  1.初次计算fullName的值  2.fullName所依赖的属性发生改变时
+                    get(){
+                        console.log("getter被调用了")
+                        return this.xing+this.ming
+                    },
+                    //set被调用的时机  当fullName的值发生改变时 不常用（value是被修改的新值）
+                    set(value){
+                        console.log("setter被调用了")
+                    }
+                },
+                // 简写形式
+                fullName01(){
+                  return this.xing + this.ming;
+                },
+                // 简写形式
+                fullName02:function (){
+                    return this.xing + this.ming;
+                }
+            }
+        })
+    </script>
 </body>
 </html>
+
