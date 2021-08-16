@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <cpn01></cpn01>
+  </div>
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <script>
+      Vue.component('cpn01',{
+          template:`
+          <div>
+            <h1>我是一个小小的组件</h1>
+            <h2>我木的感情</h2>
+          </div>
+          `
+      })
+    new Vue({
+      el: '#app'
+    })
+  </script>
+</body>
+</html>

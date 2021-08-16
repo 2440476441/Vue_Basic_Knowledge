@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <div id="app">
+    <father></father>
+    <father></father>
+    <father></father>
+  </div>
+  <script>
+    const son = Vue.extend({
+      template:`
+        <h3>我是儿子</h3>
+      `
+    })
+    const father = Vue.extend({
+      template:`
+        <div>
+            <h1>我是爸爸</h1>
+            <son></son>
+        </div>
+      `,
+      components:{
+        son: son
+      }
+    })
+    new Vue({
+      el: '#app',
+      components:{
+        father:father
+      }
+    })
+  </script>
+</body>
+</html>
