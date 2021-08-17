@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <script type="text/javascript" src="../js/vue.js"></script>
+<!--  方式一-->
+    <script type="text/x-template" id="cpn01">
+        <div>
+            <h1>你可给我滚吧！</h1>
+        </div>
+    </script>
+<!--  方式二-->
+    <template id="cpn02">
+        <div>
+            <h1>你滚蛋！</h1>
+        </div>
+    </template>
+    <div id="app">
+        <cpn01></cpn01>
+        <cpn02></cpn02>
+    </div>
+    <script>
+        Vue.component('cpn01',{
+            template:'#cpn01'
+        })
+        Vue.component('cpn02',{
+            template:'#cpn02'
+        })
+        new Vue({
+            el:'#app'
+        })
+    </script>
+</body>
+</html>
