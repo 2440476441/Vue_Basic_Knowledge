@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <div id="app">
+        <cpn @item-click="fatherClick"></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <li v-for="(item,index) in list">
+                <button @click="btnClick(item)">{{item}}</button>
+            </li>
+        </div>
+    </template>
+    <script>
+        const cpn = Vue.extend({
+            template: "#cpn",
+            methods:{
+                btnClick(item){
+                    this.$emit('item-click',item)
+                }
+            },
+            data(){
+                return{
+                    list:['蜻蜓队长','铁甲小宝','金龟太郎']
+                }
+            }
+        })
+        new Vue({
+            el:"#app",
+            components:{
+                cpn:cpn
+            },
+            methods: {
+                fatherClick(temp){
+                    alert('父组件说：'+temp)
+                }
+            }
+        })
+    </script>
+</body>
+</html>

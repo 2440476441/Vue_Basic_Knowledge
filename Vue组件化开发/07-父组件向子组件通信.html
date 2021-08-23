@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <script type="text/javascript" src="../js/vue.js"></script>
+  <div id="app">
+      <cpn :cname="name" :cgender="gender"></cpn>
+  </div>
+  <template id="test" >
+      <div>
+          <h1>{{cname}}</h1>
+      </div>
+  </template>
+  <script>
+    const cpn = Vue.extend({
+      template:'#test',
+        //1.第一种方式
+        // props:['cname','cgender'],
+        props:{
+          //2.第二种方式:指定类型
+          // cname:String,
+          //   cgender:String
+            //3.第三种方式：指定默认值
+            cname:{
+                type:String,         //类型
+                default:'默认是大佬',  //指定默认值
+                required:true        //变量必传
+            }
+            //4.还有一些其他写法，不过多赘述......
+        }
+    })
+    new Vue({
+      el:'#app',
+      data:{
+          name:'关云长',
+          gender:'男'
+      },
+      components:{
+        cpn:cpn
+      }
+    })
+  </script>
+</body>
+</html>
