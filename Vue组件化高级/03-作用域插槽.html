@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript" src="../js/vue.js"></script>
+    <div id="app">
+            <cpn>
+                <template slot-scope="slot">
+                    <ul>
+                        <li v-for="temp in slot.data">
+                            {{temp}}yyds
+                        </li>
+                    </ul>
+                </template>
+            </cpn>
+        <cpn>
+            <template slot-scope="slot">
+                <ul>
+                    <li v-for="temp in slot.data">
+                        {{temp}}*
+                    </li>
+                </ul>
+            </template>
+        </cpn>
+    </div>
+
+    <template id="cpn01">
+        <div>
+            <h1>标题</h1>
+            <slot :data="persons">无所谓</slot>
+        </div>
+    </template>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+            },
+            components:{
+                cpn:{
+                    template:'#cpn01',
+                    data(){
+                        return{
+                            persons:['孙膑','庞涓','荆轲','秦王']
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

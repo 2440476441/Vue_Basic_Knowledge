@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script type="text/javascript" src="../js/vue.js"></script>
+<!--    定义组件-->
+    <template id="cpn01">
+        <div>
+<!--            ’组件标题‘为默认值，如果没有输入参数，则显示默认值-->
+            <h2><slot name = "title">组件标题</slot></h2>
+            <div style="width: 500px;height: 100px;background: yellow;">
+                <slot name="compent">组件内容</slot>
+            </div>
+
+        </div>
+    </template>
+
+    <div id="app">
+        <cpn01><span slot="title">孙悟空</span><span slot="compent">小鲤鱼吐泡泡</span></cpn01>
+        <cpn01></cpn01>
+        <cpn01></cpn01>
+        <cpn01></cpn01>
+    </div>
+    <script>
+        // 注册全局组件
+        Vue.component('cpn01',{
+            template:'#cpn01'
+        })
+        //创建vue对象
+        new Vue({
+            el:'#app'
+        })
+    </script>
+</body>
+</html>
